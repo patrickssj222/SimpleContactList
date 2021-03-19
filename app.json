@@ -1,0 +1,12 @@
+{
+  "name": "SimpleContactList",
+  "displayName": "SimpleContactList",
+  "expo": {
+    "name": "SimpleContactList",
+    "slug": "SimpleContactList",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
