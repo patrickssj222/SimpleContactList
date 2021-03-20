@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects'
-import {watchAuthenticationAsync} from "./authentication/authentication";
+import {watchContactAsync} from "./contact/contact";
 
 export function* rootSaga(){
     yield all([
-        watchAuthenticationAsync()
+        watchContactAsync()
     ])
 }
