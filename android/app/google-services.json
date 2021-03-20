@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "933159727706",
+    "firebase_url": "https://simplecontactlist-60e9b-default-rtdb.firebaseio.com",
+    "project_id": "simplecontactlist-60e9b",
+    "storage_bucket": "simplecontactlist-60e9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933159727706:android:99b58eeb3efa090bbd1e63",
+        "android_client_info": {
+          "package_name": "com.simplecontactlist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933159727706-bftlc0ednma5l07b6ttn6ol4bue2oh72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYEOfDS4jJ-S2vpyXIF5ISXIVcDVuULD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933159727706-bftlc0ednma5l07b6ttn6ol4bue2oh72.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "933159727706-9l3p2p6k38s4rkk0rht41tu6s4el9hvj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.name.SimpleContactList"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
