@@ -4,6 +4,8 @@
 ### Goal
 A simple contact app with authentication to view, add, edit, and delete contacts
 
+### Prerequisite
+XCode version > v12.2
 ### Usage Guide
 ```
 Install dependencies:
