@@ -1,5 +1,13 @@
 import React, {useState} from "react";
-import {TextInput, View, Text, TouchableOpacity, Keyboard, TouchableWithoutFeedback} from "react-native";
+import {
+    TextInput,
+    View,
+    Text,
+    TouchableOpacity,
+    Keyboard,
+    TouchableWithoutFeedback,
+    KeyboardAvoidingView, Platform
+} from "react-native";
 import {styles} from "./AddContactStyle";
 import {CustomButton, Header} from "../../component";
 import {GlobalStyle} from "../../globalstyle";
@@ -25,7 +33,7 @@ export const AddContact = () => {
     return <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
         <View style={styles.container}>
             <Header title={"Add Contact"} color={GlobalStyle.color.primaryColor} isFocused={isFocused}/>
-            <View style={styles.inputWrapper}>
+            <KeyboardAvoidingView style={styles.inputWrapper} behavior={Platform.OS == "ios" ? "padding" : undefined}>
                 <View style={styles.inputItemWrapper}>
                     <Text>First Name</Text>
                     <TextInput style={styles.inputItem} value={firstName} placeholder={"First Name"} onChangeText={setFirstName}/>
@@ -38,7 +46,7 @@ export const AddContact = () => {
                     <Text>Company Name</Text>
                     <TextInput style={styles.inputItem} value={companyName} placeholder={"Company Name"} onChangeText={setCompanyName}/>
                 </View>
-            </View>
+            </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <CustomButton
                     text={"Submit"}

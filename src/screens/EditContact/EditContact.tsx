@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Keyboard, Text, TextInput, TouchableWithoutFeedback, View} from "react-native";
+import {Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableWithoutFeedback, View} from "react-native";
 import {styles} from "./EditContactStyle";
 import {CustomButton, Header} from "../../component";
 import {useDispatch, useSelector} from "react-redux";
@@ -44,7 +44,7 @@ export const EditContact = (props: Props) => {
     return <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
         <View style={styles.container}>
             <Header title={contact.firstName+" "+contact.lastName} color={GlobalStyle.color.primaryColor} isFocused={isFocused}/>
-            <View style={styles.inputWrapper}>
+            <KeyboardAvoidingView style={styles.inputWrapper} behavior={Platform.OS == "ios" ? "padding" : undefined}>
                 <View style={styles.inputItemWrapper}>
                     <Text>First Name</Text>
                     <TextInput style={styles.inputItem} value={firstName} placeholder={"First Name"} onChangeText={setFirstName}/>
@@ -57,7 +57,7 @@ export const EditContact = (props: Props) => {
                     <Text>Company Name</Text>
                     <TextInput style={styles.inputItem} value={companyName} placeholder={"Company Name"} onChangeText={setCompanyName}/>
                 </View>
-            </View>
+            </KeyboardAvoidingView>
             <View style={styles.footer}>
                 <CustomButton
                     text={"Submit"}
