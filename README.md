@@ -19,5 +19,5 @@ Run on simulation device:
     npm run ios
     
     android:
-    npm run androidß    
+    npm run android  
 ```
