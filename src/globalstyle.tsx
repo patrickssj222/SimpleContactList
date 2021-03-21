@@ -40,7 +40,7 @@ export const GlobalStyle = {
         opaqueFontColor: "rgba(0,0,0,0.5)",
         buttonDefaultBackgroundColor: "#2C4CFF",
         buttonDefaultFontColor: "white",
-        opaqueBorderColor: "rgba(0,0,0,0.3)",
+        opaqueBorderColor: "rgba(0,0,0,0.5)",
         errorFontColor: "red",
         primaryColor: "white",
         secondaryColor: "black",
