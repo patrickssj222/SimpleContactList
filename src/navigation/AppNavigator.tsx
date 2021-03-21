@@ -22,7 +22,7 @@ export const AppNavigator = () => {
             <Stack.Screen name={AppRoutes.EditContact}>
                 {(props:any)=><EditContact
                     {...props}
-                    id={props.id}
+                    id={props.route.params.id}
                 />}
             </Stack.Screen>
         </Stack.Navigator>

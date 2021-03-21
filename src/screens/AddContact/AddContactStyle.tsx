@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
     inputWrapper:{
         padding:30
     },
+    inputItemWrapper:{
+
+    },
     inputItem:{
         marginVertical: 20,
         borderWidth: 2,

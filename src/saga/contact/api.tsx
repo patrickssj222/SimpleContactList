@@ -5,7 +5,7 @@ import {call} from "redux-saga/effects"
 import axios from "axios"
 import {Contact, ContactList} from "../../store/contactList/reducer";
 
-export default function* getContactListAPI () {
+export function* getContactListAPI () {
     console.log("Getting Contact List...")
     try{
         const response = yield call(() => axios({
@@ -34,5 +34,80 @@ export default function* getContactListAPI () {
             Alert.alert("Error", error.response.data.ResponseStatus.Message)
         else
             Alert.alert("Error","An unexpected error occurred while retrieving contact list.")
+    }
+}
+
+export function* addContactAPI (contact: Contact) {
+    console.log("Adding Contact...")
+    try{
+        const response = yield call(() => axios({
+            url: endPoint+"/contacts",
+            method: "POST",
+            timeout: 3000,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data:{
+                first_name: contact.firstName,
+                last_name: contact.lastName,
+                company_name: contact.companyName
+            }
+        }))
+        return response.data
+    }
+    catch(error){
+        if(error?.response?.data?.ResponseStatus?.Message)
+            Alert.alert("Error", error.response.data.ResponseStatus.Message)
+        else
+            Alert.alert("Error","An unexpected error occurred while retrieving contact list.")
+    }
+}
+
+export function* editContactAPI (contact: Contact) {
+    console.log("Editing Contact...",contact)
+    try{
+        const response = yield call(() => axios({
+            url: endPoint+"/contacts/"+contact.id,
+            method: "PUT",
+            timeout: 3000,
+            headers:{
+                "Content-Type": "application/json"
+            },
+            data:{
+                first_name: contact.firstName,
+                last_name: contact.lastName,
+                company_name: contact.companyName
+            },
+        }))
+        return response.data
+    }
+    catch(error){
+        console.log(error)
+        if(error?.response?.data?.ResponseStatus?.Message)
+            Alert.alert("Error", error.response.data.ResponseStatus.Message)
+        else
+            Alert.alert("Error","An unexpected error occurred while retrieving contact list.")
+    }
+}
+
+export function* removeContactAPI (id: string) {
+    console.log("Removing Contact...",id)
+    try{
+        const response = yield call(() => axios({
+            url: endPoint+"/contacts/"+id,
+            method: "DELETE",
+            timeout: 3000,
+            headers:{
+                "Content-Type": "application/json"
+            },
+        }))
+        return response.data
+    }
+    catch(error){
+        console.log(error)
+        if(error?.response?.data?.ResponseStatus?.Message)
+            Alert.alert("Error", error.response.data.ResponseStatus.Message)
+        else
+            Alert.alert("Error","An unexpected error occurred while deleting contact.")
     }
 }

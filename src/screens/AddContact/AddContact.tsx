@@ -3,27 +3,49 @@ import {TextInput, View, Text, TouchableOpacity, Keyboard, TouchableWithoutFeedb
 import {styles} from "./AddContactStyle";
 import {CustomButton, Header} from "../../component";
 import {GlobalStyle} from "../../globalstyle";
-import {useIsFocused} from "@react-navigation/native"
+import {useIsFocused, useNavigation} from "@react-navigation/native"
+import {useDispatch} from "react-redux";
+import {SAGA_ADD_CONTACT} from "../../saga/contact/actions";
+import {AppRoutes} from "../../constants/routes";
 export const AddContact = () => {
     const isFocused = useIsFocused()
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [companyName, setCompanyName] = useState("")
-
+    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch()
+    const navigation = useNavigation()
+    const submit = () => {
+        const contact = {firstName, lastName, companyName}
+        const callBack = () => {
+            navigation.navigate(AppRoutes.Home)
+        }
+        dispatch({type: SAGA_ADD_CONTACT, payload:{setLoading,contact,callBack}})
+    }
     return <TouchableWithoutFeedback onPress={()=>Keyboard.dismiss()}>
         <View style={styles.container}>
             <Header title={"Add Contact"} color={GlobalStyle.color.primaryColor} isFocused={isFocused}/>
             <View style={styles.inputWrapper}>
-                <TextInput style={styles.inputItem} value={firstName} placeholder={"First Name"} onChangeText={setFirstName}/>
-                <TextInput style={styles.inputItem} value={lastName} placeholder={"Last Name"} onChangeText={setLastName}/>
-                <TextInput style={styles.inputItem} value={companyName} placeholder={"Company Name"} onChangeText={setCompanyName}/>
+                <View style={styles.inputItemWrapper}>
+                    <Text>First Name</Text>
+                    <TextInput style={styles.inputItem} value={firstName} placeholder={"First Name"} onChangeText={setFirstName}/>
+                </View>
+                <View style={styles.inputItemWrapper}>
+                    <Text>Last Name</Text>
+                    <TextInput style={styles.inputItem} value={lastName} placeholder={"Last Name"} onChangeText={setLastName}/>
+                </View>
+                <View style={styles.inputItemWrapper}>
+                    <Text>Company Name</Text>
+                    <TextInput style={styles.inputItem} value={companyName} placeholder={"Company Name"} onChangeText={setCompanyName}/>
+                </View>
             </View>
             <View style={styles.footer}>
                 <CustomButton
                     text={"Submit"}
                     buttonStyle={{backgroundColor: GlobalStyle.color.tertiaryColor, borderWidth: 0}}
                     textStyle={{color: GlobalStyle.color.primaryColor}}
-                    onPress={()=>{}}
+                    onPress={submit}
+                    showActivityIndicator={loading}
                 />
             </View>
         </View>
