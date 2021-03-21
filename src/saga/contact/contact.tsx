@@ -1,10 +1,12 @@
-import {takeLeading, takeEvery, call, delay} from "redux-saga/effects"
+import {takeLeading, takeEvery, call, delay, put} from "redux-saga/effects"
 import * as actionTypes from "./actions"
 import getContactListAPI from "./api";
+import {UPDATE_CONTACT_LIST} from "../../store/contactList/actions";
 function* getContactList(action:any){
     const {setLoading} = action.payload
     if(setLoading) yield call(setLoading,true)
     const contactList = yield getContactListAPI()
+    yield put({type: UPDATE_CONTACT_LIST, payload:{contactList}})
     yield delay(500)
     if(setLoading) yield call(setLoading,false)
 }

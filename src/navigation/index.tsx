@@ -12,7 +12,7 @@ export const RootNavigator = () => {
     // Handle user state changes
     function onAuthStateChanged(user:any) {
         setUser(user)
-        if(user.uid){
+        if(user?.uid){
             const sessionInfo:Session = {
                 id: user.uid,
                 displayName: user.displayName,
